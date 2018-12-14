@@ -1,0 +1,98 @@
+.lot {
+  display: grid;
+  grid-template-columns: 1fr 6fr 4fr;
+  grid-gap: 3em;
+  padding: 40px 0;
+}
+.lot .img-preview {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+}
+.lot .img-preview .img-mini {
+  cursor: pointer;
+  border: 2px solid #e6e2e0;
+  margin-bottom: 5px;
+}
+.lot .img-preview .img-mini img {
+  max-width: 100%;
+}
+.lot .img-preview .img-mini:last-child {
+  margin-bottom: 0;
+}
+.lot .img-preview .active {
+  border: 2px solid #0097ba;
+}
+.lot .img-full {
+  align-self: center;
+}
+.lot .img-full img {
+  max-width: 100%;
+}
+.lot .img-full .img-fullsize {
+  display: none;
+}
+.lot .item-bid .item-bid-header h1 {
+  text-transform: uppercase;
+  font-size: 20px;
+}
+.lot .item-bid .item-bid-header .time-left {
+  text-align: right;
+  color: #ef7874;
+  font-size: 14px;
+  font-weight: bold;
+}
+.lot .item-bid .item-bid-body {
+  background: #fbf6f4;
+  border: 1px solid #e6e2e0;
+  padding: 30px;
+  width: 100%;
+}
+.lot .item-bid .item-bid-body .price {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.lot .item-bid .item-bid-body input,
+.lot .item-bid .item-bid-body button {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e6e2e0;
+  text-transform: uppercase;
+}
+.lot .item-bid .item-bid-body input {
+  margin-bottom: 10px;
+}
+.lot .item-bid .item-bid-body hr {
+  margin: 20px 0;
+  color: #fbf6f4;
+  border-top: 1px solid #e6e2e0;
+}
+.lot-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border: 5px solid #f7f7f7;
+  border-top: 8px solid #f7f7f7;
+  margin-bottom: 20px;
+}
+.lot-info > input {
+  display: none;
+}
+.lot-info > label {
+  padding: 20px;
+  background: #f7f7f7;
+}
+.lot-info > input:checked + label {
+  background: #fff;
+}
+.lot-info .tabs > div {
+  display: none;
+  padding: 30px;
+  height: 200px;
+  width: 100%;
+  background: #fff;
+}
+.lot-info #lot-info-left:checked ~ .tabs > .lot-details,
+.lot-info #lot-info-middle:checked ~ .tabs > .payment-info,
+.lot-info #lot-info-right:checked ~ .tabs > .service-info {
+  display: block;
+}

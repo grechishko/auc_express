@@ -1,0 +1,44 @@
+doctype html
+head
+    block title
+        title Auction Express
+
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    //- link(rel='stylesheet' href='//fonts.googleapis.com/css?family=Raleway:400,300,600' type='text/css')
+    link(rel='styleshet' type='text/css' href='/stylesheets/raleway_rus.css')
+
+    link(rel='stylesheet' type='text/css' href='/stylesheets/main.css')
+    link(rel='stylesheet' type='text/css' href='/stylesheets/normalize.css')
+    //- link(rel='stylesheet' type='text/css' href='/stylesheets/skeleton.css')
+
+    link(rel='stylesheet' type='text/css' href='/stylesheets/lot.css')
+    
+body
+    .header
+        .container
+            .logo
+                h2: a(href='/main') 
+                    strong auc 
+                    | express         
+            .login: a(href='/main') login
+            .sign-up: a(href='/main') sing up
+
+    .container
+        .tmp
+
+    .nav
+        ul
+            each item in ['Главная', 'Последнии лоты', 'Поиск', 'Личный кабинет', 'Мои лоты', 'Мои ставки'] 
+                li: a()= item
+            //- li: a(href='/main') Home
+            //- li: a(href='/main') Home
+            //- li: a(href='/main') Home
+            //- li: a(href='/main') Home
+            //- li: a(href='/main') Home
+
+    .container
+        block content
+
+    .footer
+    .copyright

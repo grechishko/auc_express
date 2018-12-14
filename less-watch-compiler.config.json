@@ -1,0 +1,5 @@
+{
+    "watchFolder": "./public/less",
+    "outputFolder": "./public/stylesheets",
+    "minified": false
+}

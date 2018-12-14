@@ -1,0 +1,46 @@
+extends layout
+
+block title
+    title= name + ' - Auction Express'
+
+block content
+    .lot        
+        .img-preview
+            each img, index in images_urls
+                .img-mini: img(src=img onclick='currentImg('+index+')')
+                
+        .img-full
+            each img, index in images_urls
+                .img-fullsize: img(src=img)
+
+        .item-bid
+            .item-bid-header
+                h1= name
+                .time-left 5д 16ч 22м
+
+            .item-bid-body
+                .price= '$' + price
+                form.place-bid(action='')
+                    input(type='text')
+                    button place bid
+                hr
+                .save-item
+                    button save item
+
+    .lot-info
+        input#lot-info-left(type='radio' name='lot-info-tabs' checked)
+        label(for='lot-info-left') Информация о лоте
+        input#lot-info-middle(type='radio' name='lot-info-tabs')
+        label(for='lot-info-middle') Оплата
+        input#lot-info-right(type='radio' name='lot-info-tabs')
+        label(for='lot-info-right') Доп. Информация
+
+        .tabs
+            .lot-details 
+                p Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde corporis, maiores aliquam quisquam odio incidunt cum reprehenderit laborum esse. Voluptate?
+            .payment-info
+                p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, ut.
+            .service-info 
+                p Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde corporis, maiores aliquam quisquam odio incidunt cum reprehenderit laborum esse. Voluptate?
+
+    script(src='/javascripts/imgPreview.js')
