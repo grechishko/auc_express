@@ -3,7 +3,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 40px 0;
+  padding: 20px 0;
 }
 .lot .img-preview {
   flex-basis: 10%;
@@ -38,7 +38,7 @@
 .lot .item-bid .item-bid-header h1 {
   text-transform: uppercase;
   font-size: 20px;
-  color: #545556;
+  color: #4e4e4e;
 }
 .lot .item-bid .item-bid-header .time-left {
   text-align: right;
@@ -54,7 +54,7 @@
 }
 .lot .item-bid .item-bid-body .price {
   font-size: 24px;
-  color: #545556;
+  color: #4e4e4e;
   margin-bottom: 20px;
 }
 .lot .item-bid .item-bid-body input,
@@ -101,7 +101,7 @@
   display: none;
 }
 .lot-info .info > div h4 {
-  color: #545556;
+  color: #4e4e4e;
   text-transform: uppercase;
 }
 .lot-info .info > div p {

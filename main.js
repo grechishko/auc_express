@@ -24,25 +24,25 @@ let Lots = require('./models/lots');
 
 
 
-var store = {
-        home: {
-            page: "Main page",
-            content: "Home, sweet home"
-        },
-        about: {
-            page: "About page",
-            content: "This is about page"
-        },
-        lot: {
-            page: "Страница лота",
-            content: "Лот"
-        },
-        search: {
-            page: "Поиск",
-            content: "поиск"
-        }
-    },
-    storeKeys = Object.keys(store);
+// var store = {
+//         home: {
+//             page: "Main page",
+//             content: "Home, sweet home"
+//         },
+//         about: {
+//             page: "About page",
+//             content: "This is about page"
+//         },
+//         lot: {
+//             page: "Страница лота",
+//             content: "Лот"
+//         },
+//         search: {
+//             page: "Поиск",
+//             content: "поиск"
+//         }
+//     },
+//     storeKeys = Object.keys(store);
 
 
 app.set('view engine', 'jade');
@@ -65,24 +65,24 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 
 
-app.route('/new')
-    .get(function(req, res){
-        res.render('new', {
-            page: 'Add New',
-            links: storeKeys
-        });
-    })
-    .post(function(req, res){
-        let data = req.body;
-        if (data.pageurl && data.pagename && data.pagecontent) {
-            store[data.pageurl] = {
-                page: data.pagename,
-                content: data.pagecontent
-            };
-            storeKeys = Object.keys(store);
-        }
-        res.redirect('/');
-    });
+// app.route('/new')
+//     .get(function(req, res){
+//         res.render('new', {
+//             page: 'Add New',
+//             links: storeKeys
+//         });
+//     })
+//     .post(function(req, res){
+//         let data = req.body;
+//         if (data.pageurl && data.pagename && data.pagecontent) {
+//             store[data.pageurl] = {
+//                 page: data.pagename,
+//                 content: data.pagecontent
+//             };
+//             storeKeys = Object.keys(store);
+//         }
+//         res.redirect('/');
+//     });
 
 app.get('/lots', function(req, res){
     Lots.find({}, function(err, lots){
@@ -120,21 +120,39 @@ app.get('/lots/:id', function(req, res){
     });
 });
 
+app.route('/signup')
+    .get(function(req, res){
+        res.render('signup', {
+        });
+    })
+    .post(function(req, res){
+        let data = req.body;
+        // if (data.pageurl && data.pagename && data.pagecontent) {
+        //     store[data.pageurl] = {
+        //         page: data.pagename,
+        //         content: data.pagecontent
+        //     };
+        //     storeKeys = Object.keys(store);
+        // }
+        // res.redirect('/');
+    });
 
+// app.get('/:page?', function(req, res){
+//     let page = req.params.page;
+//     if (!page) page = 'home';
+//     let data = store[page];
+//     if (!data) {
+//         res.redirect('/');
+//         return;
+//     }
+//     data.links = storeKeys;
+//     data.query = req.query;
+//     res.render('main', data);
+// });
 
-app.get('/:page?', function(req, res){
-    let page = req.params.page;
-    if (!page) page = 'home';
-    let data = store[page];
-    if (!data) {
-        res.redirect('/');
-        return;
-    }
-    data.links = storeKeys;
-    data.query = req.query;
-    res.render('main', data);
+app.get('/', function(req, res){
+    res.render('main');
 });
-
 
 
 

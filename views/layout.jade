@@ -9,36 +9,51 @@ head
     link(rel='styleshet' type='text/css' href='/stylesheets/raleway_rus.css')
 
     link(rel='stylesheet' type='text/css' href='/stylesheets/main.css')
-    link(rel='stylesheet' type='text/css' href='/stylesheets/normalize.css')
+    //- link(rel='stylesheet' type='text/css' href='/stylesheets/normalize.css')
     //- link(rel='stylesheet' type='text/css' href='/stylesheets/skeleton.css')
 
     link(rel='stylesheet' type='text/css' href='/stylesheets/lot.css')
+    link(rel='stylesheet' type='text/css' href='/stylesheets/lots.css')
+    link(rel='stylesheet' type='text/css' href='/stylesheets/signup.css')
     
 body
     .header
         .container
             .logo
-                h2: a(href='/main') 
-                    strong auc 
+                h2: a(href='/') 
+                    span auc
                     | express         
-            .login: a(href='/main') login
-            .sign-up: a(href='/main') sing up
+            .login: a(href='/') Войти
+            .sign-up: a(href='/signup') Регистрация
 
     .container
-        .tmp
-
+        .page-header
+            block page-header
+                h1 Аукцион экспресс
+                p Самый крутой аукцион, лучшие цены и всё такое.
+                p Вторая строчка
     .nav
         ul
             each item in ['Главная', 'Последнии лоты', 'Поиск', 'Личный кабинет', 'Мои лоты', 'Мои ставки'] 
                 li: a()= item
             //- li: a(href='/main') Home
-            //- li: a(href='/main') Home
-            //- li: a(href='/main') Home
-            //- li: a(href='/main') Home
-            //- li: a(href='/main') Home
 
     .container
         block content
 
+    
     .footer
-    .copyright
+        .container
+            .footer-left-side
+                h2 Лого
+                p Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat blanditiis et neque asperiores, soluta temporibus nisi cum impedit voluptas sapiente pariatur quo dolores error doloribus at corporis adipisci odit ipsa magni officia, earum animi illo possimus aut. Amet, architecto! Illum pariatur necessitatibus totam impedit provident ducimus quaerat! Et, nihil molestias.
+            .footer-right-side
+                a(href='#') Инфо
+                a(href='#') Инфо
+                a(href='#') Инфо
+                a(href='#') Инфо
+
+    
+    .footer-bottom
+        .container
+            .copyright Copiright @ 2018

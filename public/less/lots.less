@@ -1,0 +1,48 @@
+@import 'color-schema';
+
+.lot-preview {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    // align-content: center;
+
+    background: @color-2;
+    border: 2px solid @color-5;    
+    border-radius: 3px;
+
+    padding: 15px 30px;
+    margin-bottom: 10px;
+
+    .lot-preview-img {
+        flex-basis: 15%;
+        align-self: center;
+    }
+    .lot-preview-info {
+        flex-basis: 65%;
+        border-left: 1px solid @color-5;
+        border-right: 1px solid @color-5;
+        padding: 10px 30px;
+        h2 {
+            color: @color-4;
+        }
+        p {
+            color: @color-3;
+        }
+    }
+    .lot-preview-extra {
+        flex-basis: 10%;
+        align-self: center;
+        a {
+            font-size: 18px;
+            font-weight: 600;
+            padding: 15px;
+            border-radius: 20px;
+            background: @color-5;
+            color: @color-2;
+            box-shadow: 0px 3px 2px 0px @color-6;
+        }
+        a:hover {
+            background: @color-6;
+        }
+    }
+}

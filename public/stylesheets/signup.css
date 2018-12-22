@@ -1,0 +1,26 @@
+.signup-form {
+  margin: 40px 0;
+}
+.signup-form form {
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+  margin: 0 auto;
+}
+.signup-form form label {
+  font-size: 16px;
+  color: #009bfb;
+}
+.signup-form form input,
+.signup-form form button {
+  font-size: 16px;
+  height: 100%;
+  padding: 10px;
+  border: 1px solid #009bfb;
+  margin-bottom: 15px;
+}
+.signup-form form button {
+  background: #009bfb;
+  color: #fff;
+  margin-top: 10px;
+}

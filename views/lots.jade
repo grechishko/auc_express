@@ -1,22 +1,32 @@
 extends layout
 
 block content
-    table.u-full-width
-        thead
-            tr
-                th id
-                th Name
-                th Description
-                th Price
-        tbody
-            tr
-                td test
-                td test
-                td test
-                td test
+    //- table.u-full-width
+    //-     thead
+    //-         tr
+    //-             th id
+    //-             th Name
+    //-             th Description
+    //-             th Price
+    //-     tbody
+    //-         tr
+    //-             td test
+    //-             td test
+    //-             td test
+    //-             td test
+    //-     each lot in lots
+    //-         tr
+    //-             td= lot.id
+    //-             td= lot.name
+    //-             td= lot.description
+    //-             td= lot.price
+    .lots
         each lot in lots
-            tr
-                td= lot.id
-                td= lot.name
-                td= lot.description
-                td= lot.price
+            .lot-preview
+                .lot-preview-img: img(src=lot.images_urls[0])
+                .lot-preview-info
+                    h2= lot.name
+                    p= lot.description
+                    p= lot.price
+                .lot-preview-extra
+                    a(href='/lots/'+lot.id) Подробнее

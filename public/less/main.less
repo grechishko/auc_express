@@ -12,15 +12,22 @@
 }
 
 body {
+    font-family: 'Raleway', sans-serif;
     font-size: 14px;
     line-height: 1.5; 
     background: @color-1;
 
-    h2, ul, li {
+    h1, h2, h3, h4, ul, li {
         margin: 0;
     }
     a {
         text-decoration: none;
+    }
+    
+    transition: all ease-in-out 200ms;
+    img {
+        display: block;
+        max-width: 100%;
     }
 }
 
@@ -36,18 +43,15 @@ body {
         display: flex;
         flex-wrap: wrap;
         padding: 20px;
-        // height: 80px;
         .logo {
             margin-right: auto;
-            // margin: auto;
             h2 {
                 a {
                     color: @color-3;
                 }
             }        
         }
-        .login, .sign-up {            
-            // margin: auto;
+        .login, .sign-up {
             padding: 0 20px;
             cursor: pointer;
             a {
@@ -58,42 +62,86 @@ body {
     }   
 }
 
-
-
-
-.tmp {
-    height: 150px;
+.page-header {
+    padding: 15px 0;
+    margin-bottom: 15px;
+    h1 {
+        color: @color-5;
+        font-size: 30px;
+        text-transform: capitalize;
+        margin-bottom: 20px;
+    }
+    p {
+        color: #808080;
+        font-size: 16px;
+        font-weight: bold;
+    }
 }
 
 .nav {
-    border-top: 1px solid #6d6e70;
-    border-bottom: 1px solid #6d6e70;
+    border-top: 1px solid @color-5;
+    border-bottom: 1px solid @color-5;
+    background: @color-5;
     ul {
         list-style: none;
         display: flex;
         justify-content: center;
         li {
-            padding: 20px;
+            padding: 15px;
             transition: all ease-in-out 250ms;
+            cursor: pointer;
             a {
-                color: #545556;
+                color: @color-1;
             }
         }
         li:hover {    
-            background: #6d6e70;
+            background: @color-1;
         }
         li:hover a {
-            color: #f7f7f7;
+            color: @color-6;
         }
     }
 }
 
 
-.footer {
-    height: 100px;
-    background: @color-3;
+.nav {
+    margin-bottom: 30px;
 }
-.copyright {
-    height: 20px;
+.footer {
+    margin-top: 30px;
+}
+
+
+.footer {
+    background: @color-3;
+    color: @color-2;
+    padding: 10px 0;
+    font-size: 13px;
+    .container {
+        display: flex;
+        .footer-left-side {
+            flex: 1;
+        }
+        .footer-right-side {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            a {
+                margin: auto;
+                color: @color-2;
+            }
+        }
+    }
+     
+}
+.footer-bottom {
     background: @color-4;
+    .copyright {
+        font-size: 12px;
+        text-align: center;
+        color: @color-2;
+        max-width: 300px;
+        padding: 5px 0;
+        margin: 0 auto;
+    }
 }
