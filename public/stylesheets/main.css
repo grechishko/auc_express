@@ -5,9 +5,8 @@
 }
 body {
   font-size: 14px;
-  line-height: 1.42857143;
-  color: #333;
-  background: #fff;
+  line-height: 1.5;
+  background: #f7f7f7;
 }
 body h2,
 body ul,
@@ -22,26 +21,29 @@ body a {
   margin: 0 auto;
 }
 .header {
-  background: #f7f7f7;
+  background: #fff;
   box-shadow: 3px 0px 10px 0px rgba(0, 0, 0, 0.3);
 }
 .header .container {
   display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
 }
 .header .container .logo {
   margin-right: auto;
 }
 .header .container .logo h2 a {
-  color: #808080;
+  color: #6d6e70;
 }
 .header .container .login,
 .header .container .sign-up {
-  padding: 20px;
+  padding: 0 20px;
   cursor: pointer;
 }
 .header .container .login a,
 .header .container .sign-up a {
   text-transform: capitalize;
+  color: #009bfb;
 }
 .tmp {
   height: 150px;

@@ -11,22 +11,30 @@
 @lot-info-color: #f7f7f7;
 
 
+
+@import 'color-schema';
+
+
+
 .lot {
-    display: grid;    
-    grid-template-columns: 1fr 6fr 4fr;
-    grid-gap: 3em;
+    // display: grid;    
+    // grid-template-columns: 1fr 6fr 4fr;
+    // grid-gap: 3em;
     
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
     padding: 40px 0;
 
     .img-preview {
-        align-self: center;
-        
+        flex-basis: 10%;        
         display: flex;
-        flex-direction: column;
-                
+        flex-direction: column;                
         .img-mini {
                 cursor: pointer;
-                border: 2px solid @img-border-color;
+                // border: 1px solid @color-4;
                 margin-bottom: 5px;                
                 img {
                     max-width: 100%;
@@ -34,15 +42,14 @@
             }
             .img-mini:last-child {
                 margin-bottom: 0;
-
         }
         .active {
-            border: 2px solid @img-border-color-active;
+            border: 2px solid @color-5;
         }
     }
     
     .img-full {
-        align-self: center;
+        flex-basis: 50%;
         img {
             max-width: 100%;
         }
@@ -52,91 +59,132 @@
     }
 
 
-    .item-bid {
+    .item-bid {        
+        flex-basis: 30%;
         .item-bid-header {            
             h1 {
                 text-transform: uppercase;
                 font-size: 20px;
+                color: @color-4;
             }
             .time-left {
                 text-align: right;
-                color: #ef7874;
+                color: @color-6;
                 font-size: 14px;
                 font-weight: bold;
             }
             
         }
-
         .item-bid-body {
-            background: @item-main-color;
-            border: 1px solid @item-border-color;
+            background: @color-2;
+            border: 2px solid @color-5;
+            border-radius: 1px;
             padding: 30px;
-            width: 100%;
             .price {
                 font-size: 24px;
+                color: @color-4;
                 margin-bottom: 20px;
             }
             input, button {
                 width: 100%;
                 padding: 10px;
-                border: 1px solid @item-border-color;
+                border: 1px solid @color-5;
                 text-transform: uppercase;
             }
             input {
                 margin-bottom: 10px;
             }
+            button {
+                background: @color-5;
+                // border: 1px solid @color-6;
+                color: @color-2;
+            }
             hr {
                 margin: 20px 0;
                 color: @item-main-color;
-                border-top: 1px solid @item-border-color;
+                border-top: 1px solid @color-5;
             } 
-        }               
-
-        // display: flex;
-        // flex-direction: column;
-        // align-items:center;
+        }
     }
 }
 
 
 .lot-info {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    // display: grid;
+    // grid-template-columns: 1fr 1fr 1fr;
 
-    border: 5px solid @lot-info-color;
-    border-top: 8px solid @lot-info-color;
+    // border: 5px solid @lot-info-color;
+    // border-top: 8px solid @lot-info-color;
 
     margin-bottom: 20px;
 
-    > input {
-        display: none;
-    }
-    > label {
-        padding: 20px;
-        background: @lot-info-color;
-    }
-    > input:checked + label {
-        background: #fff;
-        // border: 5px solid @item-main-color;
-        // border-bottom: none;
-    }
-    .tabs > div {
-        display: none;
+    
 
-        padding: 30px;
-        height: 200px;
-        width: 100%;
+    .tabs {
+        display: flex;
+        flex-direction: row;
+        padding: 0 50px;
+        border-bottom: 1px solid #ececec;
+        > div {
+            padding: 15px 0;
+            margin-right: 20px;
+            margin-bottom: -1px;
+            cursor: pointer;
+        }        
+        .active {
+            color: @color-5;
+            border-bottom: 2px solid @color-5;
+            font-weight: bold;
+        }
+    }
+    .info {
+        > div {
+            padding: 20px;
+
+            display: none;
+            h4 {
+                color: @color-4;
+                text-transform: uppercase;
+            }
+            p {
+                color: @color-3;
+            }
+        }        
+        .active {
+            display: block;
+        }
+    }
+
+
+
+    // > input {
+    //     display: none;
+    // }
+    // > label {
+    //     flex: 1;
+    //     padding: 20px;
+    //     background: @lot-info-color;
+    // }
+    // > input:checked + label {
+    //     // background: #fff;
+
+    //     // border: 5px solid @item-main-color;
+    //     // border-bottom: none;
+    //     color: @color-5;
+    // }
+    // .tabs > div {
+    //     display: none;
+
+    //     padding: 30px;
+    //     height: 200px;
+    //     width: 100%;
         
-        background: #fff;
-    }
-    #lot-info-left:checked ~ .tabs > .lot-details,
-    #lot-info-middle:checked ~ .tabs > .payment-info,
-    #lot-info-right:checked ~ .tabs > .service-info
-     {
-        display: block;
-        // display: inline-grid;
-        // align-self:end;
-        // grid-row: 1/4;
-
-    }
+    //     // background: #fff;
+    // }
+    // #lot-info-left:checked ~ .tabs > .lot-details,
+    // #lot-info-middle:checked ~ .tabs > .payment-info,
+    // #lot-info-right:checked ~ .tabs > .service-info
+    //  {
+    //     display: block;
+    // }
 }

@@ -3,6 +3,8 @@
 @footer-color: #6d6e70;
 @bottom-color: #545556;
 
+@import 'color-schema';
+
 * {
     margin: 0;
     padding: 0;
@@ -11,9 +13,8 @@
 
 body {
     font-size: 14px;
-    line-height: 1.42857143;
-    color: #333;    
-    background: @header-color;
+    line-height: 1.5; 
+    background: @color-1;
 
     h2, ul, li {
         margin: 0;
@@ -29,23 +30,29 @@ body {
 }
 
 .header {
-    background: @body-color;
+    background: @color-2;
     box-shadow: 3px 0px 10px 0px rgba(0, 0, 0, 0.3);
     .container {        
         display: flex;
+        flex-wrap: wrap;
+        padding: 20px;
+        // height: 80px;
         .logo {
             margin-right: auto;
+            // margin: auto;
             h2 {
                 a {
-                    color: #808080;
+                    color: @color-3;
                 }
             }        
         }
-        .login, .sign-up {
-            padding: 20px;
+        .login, .sign-up {            
+            // margin: auto;
+            padding: 0 20px;
             cursor: pointer;
             a {
                 text-transform: capitalize;
+                color: @color-5;
             }
         }
     }   
@@ -84,9 +91,9 @@ body {
 
 .footer {
     height: 100px;
-    background: @footer-color;
+    background: @color-3;
 }
 .copyright {
     height: 20px;
-    background: @bottom-color;
+    background: @color-4;
 }
