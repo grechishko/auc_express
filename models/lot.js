@@ -1,12 +1,6 @@
 const mongoose = require('mongoose');
 
-const ObjectId = mongoose.Schema.Types.ObjectId;
-
-// Lot Schema
 const lotSchema = mongoose.Schema({
-	// _id: {
-	// 	type: ObjectId
-	// },
 	name: {
 		type: String, 
 		required: true
@@ -19,7 +13,7 @@ const lotSchema = mongoose.Schema({
 		type: Number,
 		required: true
 	},
-	user: {
+	auctioner: {
 		type: String
 	},
 	date: {
@@ -33,9 +27,7 @@ const lotSchema = mongoose.Schema({
 	},
 	images_urls: {
 		type: [String]
-	}
-	
-	
+	}	
 	// rating: {
 	// 	type: Number, 
 	// 	// "default": 0, 
@@ -44,4 +36,4 @@ const lotSchema = mongoose.Schema({
 	// }
 });
 
-let Lot = module.exports = mongoose.model('Lot', lotSchema);
+module.exports = mongoose.model('Lot', lotSchema);

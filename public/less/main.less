@@ -51,7 +51,7 @@ body {
                 }
             }        
         }
-        .login, .sign-up {
+        div, .login, .sign-up {
             padding: 0 20px;
             cursor: pointer;
             a {
@@ -82,22 +82,39 @@ body {
     border-top: 1px solid @color-5;
     border-bottom: 1px solid @color-5;
     background: @color-5;
-    ul {
-        list-style: none;
-        display: flex;
-        justify-content: center;
-        li {
+    // ul {
+    //     list-style: none;
+    //     display: flex;
+    //     justify-content: center;
+    //     li {
+    //         padding: 15px;
+    //         transition: all ease-in-out 250ms;
+    //         cursor: pointer;
+    //         a {
+    //             color: @color-1;
+    //         }
+    //     }
+    //     li:hover {    
+    //         background: @color-1;
+    //     }
+    //     li:hover a {
+    //         color: @color-6;
+    //     }
+    // }
+    .container{        
+        display:flex;
+        // @media (max-width:40em) {
+        //     flex-direction:column;
+        // }    
+        a {
+            flex: 1;
             padding: 15px;
+            color: @color-1;
+            text-align: center;
             transition: all ease-in-out 250ms;
-            cursor: pointer;
-            a {
-                color: @color-1;
-            }
         }
-        li:hover {    
+        a:hover {
             background: @color-1;
-        }
-        li:hover a {
             color: @color-6;
         }
     }
@@ -107,6 +124,17 @@ body {
 .nav {
     margin-bottom: 30px;
 }
+
+.messages {
+    ul {
+        list-style: none;        
+        li {
+            color: @color-5;
+            text-align: center;
+        }
+    }
+}
+
 .footer {
     margin-top: 30px;
 }

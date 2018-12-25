@@ -22,9 +22,13 @@ body
             .logo
                 h2: a(href='/') 
                     span auc
-                    | express         
-            .login: a(href='/') Войти
-            .sign-up: a(href='/signup') Регистрация
+                    | express  
+            if user
+                div= user.username
+                div: a(href='/user/logout') Выйти
+            else
+                .login: a(href='/user/login') Войти
+                .sign-up: a(href='/user/register') Регистрация
 
     .container
         .page-header
@@ -32,13 +36,32 @@ body
                 h1 Аукцион экспресс
                 p Самый крутой аукцион, лучшие цены и всё такое.
                 p Вторая строчка
+
     .nav
-        ul
-            each item in ['Главная', 'Последнии лоты', 'Поиск', 'Личный кабинет', 'Мои лоты', 'Мои ставки'] 
-                li: a()= item
-            //- li: a(href='/main') Home
+        
+        //- ul
+        //-     each item in ['Главная', 'Последнии лоты', 'Поиск', 'Личный кабинет', 'Мои лоты', 'Мои ставки'] 
+        //-         li: a()= item
+        //-     //- li: a(href='/main') Home
+        .container
+            if user
+                a(href='/') Главная
+                a(href='/lots') Все лоты
+                a(href='/') Поиск
+                a(href='/') Личный кабинет
+                a(href='/') Мои лоты
+                a(href='/') Мои лоты
+                a(href='/lots/add') Выставить лот               
+            else
+                a(href='/') Главная
+                a(href='/lots') Все лоты
+                a(href='/lots') Последнии лоты
+                a(href='/lots') Популярные
+                a(href='/') Поиск        
+
 
     .container
+        != messages('message_template', locals)
         block content
 
     

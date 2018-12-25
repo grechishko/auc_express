@@ -44,11 +44,13 @@ body img {
 .header .container .logo h2 a {
   color: #6d6e70;
 }
+.header .container div,
 .header .container .login,
 .header .container .sign-up {
   padding: 0 20px;
   cursor: pointer;
 }
+.header .container div a,
 .header .container .login a,
 .header .container .sign-up a {
   text-transform: capitalize;
@@ -74,27 +76,29 @@ body img {
   border-bottom: 1px solid #009bfb;
   background: #009bfb;
 }
-.nav ul {
-  list-style: none;
+.nav .container {
   display: flex;
-  justify-content: center;
 }
-.nav ul li {
+.nav .container a {
+  flex: 1;
   padding: 15px;
-  transition: all ease-in-out 250ms;
-  cursor: pointer;
-}
-.nav ul li a {
   color: #f7f7f7;
+  text-align: center;
+  transition: all ease-in-out 250ms;
 }
-.nav ul li:hover {
+.nav .container a:hover {
   background: #f7f7f7;
-}
-.nav ul li:hover a {
   color: #0c5899;
 }
 .nav {
   margin-bottom: 30px;
+}
+.messages ul {
+  list-style: none;
+}
+.messages ul li {
+  color: #009bfb;
+  text-align: center;
 }
 .footer {
   margin-top: 30px;

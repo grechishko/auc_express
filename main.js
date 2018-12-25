@@ -1,16 +1,47 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
 
-// App Init
+// App initialization and configuration
 const app = express();
 app.set('view engine', 'jade');
 app.use(express.static(__dirname + '/public'));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 
-// DB
-mongoose.connect('mongodb://localhost/auc', { useNewUrlParser: true });
+// Modules initialization and configuration
+// BodyParser
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+// Express Validator
+const expressValidator = require('express-validator');
+app.use(expressValidator());
+// Express Session
+const session = require('express-session');
+app.use(session({
+    secret: 'keyboard cat',
+    resave: true,
+    saveUninitialized: true
+    // saveUninitialized: true,
+    // cookie: { secure: true }
+}));
+// Express Messages
+app.use(require('connect-flash')());
+app.use(function (req, res, next) {
+    res.locals.messages = require('express-messages')(req, res);
+    next();
+});
+// Passport
+const passport = require('passport');
+require('./config/passport')(passport);
+app.use(passport.initialize());
+app.use(passport.session());
+app.get('*', function(req, res, next){
+    res.locals.user = req.user || null;
+    next();
+});
+
+// Database connection
+const config = require('./config/database');
+const mongoose = require('mongoose');
+mongoose.connect(config.database, { useNewUrlParser: true });
 const db = mongoose.connection;
 db.once('open', function(){
     console.log('Connected to MongoDB');
@@ -20,13 +51,6 @@ db.on('error', function(err){
 });
 
 
-// Models
-let Lot = require('./models/lot');
-
-
-
-
-
 // Middleware
 app.use(function(req, res, next){
     console.log('%s %s', req.method, req.url);
@@ -34,79 +58,15 @@ app.use(function(req, res, next){
 });
 
 
+// Route
+const users = require('./routes/users');
+app.use('/user', users);
 
-app.get('/lots', function(req, res){
-    Lot.find({}, function(err, lots){
-        if (err) {
-            console.log(err);
-            return;
-        }
-        // console.log(lots[0]._id);
-        res.render('lots', {
-            page: 'Лоты',
-            lots: lots
-        });
-    });
-});
-
-// Lot page
-app.get('/lots/:id', function(req, res){
-    let id = req.params.id;  
-    console.log('id: ' + id);
-    if (!id) {
-        res.redirect('/lots');
-        return;
-    }
-    Lot.findOne({_id: id }, function(err, lot){
-        if (err) {
-            console.log('Error:\n')
-            console.log(err);
-            return;
-        }
-        let tmp = lot;
-        console.log(tmp.name, tmp.id, tmp.description, tmp.price);
-        console.log('\n' + tmp.images_urls[0]);
-       
-        res.render('lot', tmp);
-    });
-});
-
-app.route('/signup')
-    .get(function(req, res){
-        res.render('signup', {
-        });
-    })
-    .post(function(req, res){
-        // let data = req.body;        
-    });
-
-
-app.route('/add')
-    .get(function(req, res){
-        res.render('add', {
-        });
-    })
-    .post(function(req, res){
-        let data = req.body;        
-        console.log(data);
-
-        let newLot = new Lot();
-        newLot.name = data.name;
-        newLot.description = data.description;
-        newLot.price = data.price;
-        newLot.save(function(err){
-            if(err){
-                console.log(err);
-                return;
-            }
-            res.redirect('/lots');
-        })        
-        return;
-    });
-
+const lots = require('./routes/lots');
+app.use('/lots', lots);
 
 app.get('/', function(req, res){
-    res.render('main');
+    res.render('index');
 });
 
 

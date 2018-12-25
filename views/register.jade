@@ -1,0 +1,54 @@
+extends layout
+
+block title
+    title= 'Регистрация - Auction Express'
+
+block page-header
+    h1 Регистрация
+    p Зарегистрируйтись, чтобы принять участие в аукционе
+
+block content
+    .signup-form
+        - let labels = { username: 'Имя пользователя', email: 'E-mail', password: 'Пароль', password_confirm: 'Повторите пароль' }
+        
+        != messages()
+        if errors
+            form(action="register" method='post')
+                
+                each err in errors
+                    if err.param == 'username'
+                        - labels.username = err.msg
+                label.error(for="username")= labels.username
+                input(type="text" name='username')
+
+                each err in errors
+                    if err.param == 'email'
+                        - labels.email = err.msg
+                label.error(for="email")= labels.email
+                input(type="text" name='email')
+
+                each err in errors
+                    if err.param == 'password'
+                        - labels.password = err.msg
+                label.error(for="password")= labels.password
+                input(type="password" name='password')
+
+                each err in errors
+                    if err.param == 'password_confirm'
+                        - labels.password_confirm = err.msg
+                label.error(for="password_confirm")= labels.password_confirm
+                input(type="password" name='password_confirm')
+
+                button Зарегистрироваться
+            
+        else
+            form(action="register" method='post')            
+                label(for="username") Имя пользователя
+                input(type="text" name='username')
+                label(for="email") E-mail
+                input(type="text" name='email')
+                label(for="password") Пароль
+                input(type="password" name='password')
+                label(for="password_confirm") Повторите пароль
+                input(type="password" name='password_confirm')
+                button Зарегистрироваться
